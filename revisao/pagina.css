@@ -1,0 +1,15 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    text-align: center;
+}
+
+.destaque{
+    background-color: rgb(250, 230, 240);
+    font-weight: bold;
+}
+
+.removido{
+    text-decoration: line-through;
+    color: gray;
+}
