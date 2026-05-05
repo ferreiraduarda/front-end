@@ -20,19 +20,21 @@ botao.addEventListener("click", () => {
     contexto.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     //obter a imagem como um URL de dados
-    const imagemDataURL = canvas.toDataURL("image/png");
+    const imageDataURL = canvas.toDataURL("image/png");
     //enviar a imagem para um servidor
-    enviarImagem(imagemDataURL);
+    enviarImagem(imageDataURL);
 });
 
 //função para enviar a imagem para um servidor
-function enviarImagem(imagemDataURL){
+function enviarImagem(imageDataURL){
     //simular o envio, salvando o dado no próprio computador
     console.log("Enviando imagem para o servidor...");
 
-    fetch("/", {
+    const base64String = imageDataURL.split(",")[1];
+
+    fetch("http://DOP3080-1247456:8000/images", {
         method: "POST",
-        body: JSON.stringify({imagem: imagemDataURL}),
+        body: JSON.stringify({image: base64String, mime_type: 'image/png'}),
         headers: {
             "Content-Type": "application/json"
         }
